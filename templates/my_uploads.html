@@ -1,0 +1,72 @@
+{%- extends "invenio_app_rdm/deposits/uploads.html" %}
+
+{%- block page_header %}
+{%- include config.DEPOSITS_HEADER_TEMPLATE %}
+{%- endblock page_header %}
+
+{%- block page_body %}
+
+<section class="geo-knowledge-hub-deposit-section section-content-white-bg">
+  <span class="deposit-info">Organize and Share your Knowledge</span>
+  <div class="ui container">
+    <div class="ui padded relaxed centered grid">
+      <div class="geo-knowledge-hub-resources">
+        <div class="gkh-resource">
+          <div class="column">
+            <i class="file alternate huge icon"></i>
+            <h3>Publications</h3>
+            <p></p>
+          </div>
+        </div>
+        <div class="gkh-resource">
+          <div class="column">
+            <i class="code huge icon"></i>
+            <h3>Code</h3>
+            <p></p>
+          </div>
+        </div>
+        <div class="gkh-resource">
+          <div class="column">
+            <i class="database huge icon"></i>
+            <h3>Data</h3>
+            <p></p>
+          </div>
+        </div>
+        <div class="gkh-resource">
+          <div class="column">
+            <i class="book huge icon"></i>
+            <h3>Training Material</h3>
+            <p></p>
+          </div>
+          </div>
+        <div class="gkh-resource">
+          <div class="column">
+            <i class="cloud huge icon"></i>
+            <h3>Cloud Instances</h3>
+            <p></p>
+          </div>
+        </div>
+        <div class="gkh-resource">
+          <div class="column">
+            <i class="slideshare huge icon"></i>
+            <h3>Presentations</h3>
+            <p></p>
+          </div>
+        </div>
+        <div class="gkh-resource">
+          <div class="column">
+            <i class="cog huge icon"></i>
+            <h3>Other</h3>
+            <p></p>
+          </div>
+        </div>
+      </div>
+      <h4>The Knowledge Hub allows you to create Knowledge Packages in which all the components of your projects are linked and accessible.</h4>
+      <div class="create-deposit">
+        <a class="ui button primary" role="button" href="{{ url_for('invenio_app_rdm.deposits_create') }}">New Deposit</a>
+      </div>
+      </div>
+  </div>
+</section>
+{%- endblock page_body %}
+
