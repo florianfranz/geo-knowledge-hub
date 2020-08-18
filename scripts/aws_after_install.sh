@@ -87,4 +87,17 @@ echo "services_setup = True" >> .invenio.private
 
 echo "'.invenio.private' file created!"
 
+#
+# Adding host IPv4
+#
+echo "Adding host IPv4 to 'invenio.cfg' file..."
+
+EC2_INSTANCE_IPV4=$(/home/ubuntu/Programs/bin/which-ip.sh)
+APP_ALLOWED_HOSTS_ORIGINAL="APP_ALLOWED_HOSTS = \['0\.0\.0\.0', 'localhost', '127\.0\.0\.1'\]"
+APP_ALLOWED_HOSTS_NEW="APP_ALLOWED_HOSTS = ['0.0.0.0', 'localhost', '127.0.0.1', '${EC2_INSTANCE_IPV4}']"
+
+sed -i 's/'"${APP_ALLOWED_HOSTS_ORIGINAL}"'/'"${APP_ALLOWED_HOSTS_NEW}"'/g' invenio.cfg
+
+echo "IPv4 added to 'invenio.cfg' file!"
+
 echo "AfterInstall script finished successfully!"
