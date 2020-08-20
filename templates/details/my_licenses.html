@@ -1,0 +1,8 @@
+<dt class="record-info-title">
+  <b><h3>Licenses:</h3></b>
+</dt>
+<dd>
+  {%- for license in record.licenses%}
+  <a href={{license.uri}} >{{ license.license }}</a>
+  {% endfor %}
+</dd>
