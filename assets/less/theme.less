@@ -1,8 +1,29 @@
 @import "invenio_app_rdm/theme";
 @import "variables";
 
-// Frontpage
 
+.outer-navbar {
+  background: transparent;
+  padding: 0px;
+
+
+  #invenio-nav {
+  background-image: @navbar_background_image;
+  background-color: @navbar_background_color;
+  display: flex;
+ }
+
+  #frontpage-search-bar{
+  background-image: @frontpage_search_image;
+  background-color: @frontpage_search_color;
+
+  }
+
+  a{
+    color: #406078;
+  }
+}
+// Frontpage
 
 .section-title {
   -webkit-font-smoothing: antialiased;
@@ -11,6 +32,7 @@
   text-align: center;
   display: block;
   color: #526479;
+  margin-top:30px;
   margin-bottom: 45px;
   font-weight: 500;
 }
