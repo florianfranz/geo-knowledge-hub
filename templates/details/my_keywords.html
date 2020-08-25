@@ -1,0 +1,12 @@
+<dt class="record-info-title">
+      <b><h3>Keywords:</h3></b>
+</dt>
+<dd>
+  {%- for keyword in record.subjects %}
+  <span class="label label-keyword">
+    {{ keyword.subject }}
+  </span>
+  {%- endfor %}
+</dd>
+<br>
+<hr class="thin-line"></hr>
