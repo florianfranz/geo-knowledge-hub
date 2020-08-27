@@ -94,6 +94,18 @@ Check the installed version::
     We are using ``invenio-cli`` version 0.14.2.
 
 
+Create Instance Configuration File
+++++++++++++++++++++++++++++++++++
+
+
+You will need to create a file names ``.invenio.private`` in the root of the source code repository::
+
+    echo "[cli]" > .invenio.private
+    echo "project_dir = $(pwd)" >> .invenio.private
+    echo "instance_path = ${VIRTUAL_ENV}/var/instance" >> .invenio.private
+    echo "services_setup = True" >> .invenio.private
+
+
 Local Installation
 ++++++++++++++++++
 
