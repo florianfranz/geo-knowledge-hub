@@ -7,7 +7,7 @@
 # under the terms of the MIT License; see LICENSE file for more details.
 #
 
-set -eoux pipefail
+set -eou pipefail
 
 echo "[cli]" > .invenio.private
 echo "project_dir = $(pwd)" >> .invenio.private
