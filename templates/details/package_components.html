@@ -7,22 +7,22 @@
       {% if related.resource_type.type in [ "publication"] %}
     <li>
         <i class="file alternate icon"></i>
-    <a href="https://doi.org/{{related.identifier}}" target="_blank"> https://doi.org/{{related.identifier}} </a>
+    <a href="{{related.identifier}}" target="_blank"> {{related.identifier}} </a>
     </li>
       {%- elif related.resource_type.type in [ "software"] %}
       <li>
         <i class="code icon"></i>
-    <a href="https://doi.org/{{related.identifier}}" target="_blank"> https://doi.org/{{related.identifier}} </a>
+    <a href="{{related.identifier}}" target="_blank"> {{related.identifier}} </a>
     </li>
       {%- elif related.resource_type.type in [ "dataset"] %}
       <li>
         <i class="database icon"></i>
-    <a href="https://doi.org/{{related.identifier}}" target="_blank"> https://doi.org/{{related.identifier}} </a>
+    <a href="{related.identifier}}" target="_blank"> {{related.identifier}} </a>
     </li>
       {%- else %}
       <li>
         <i class="cog icon"></i>
-    <a href="https://doi.org/{{related.identifier}}" target="_blank"> https://doi.org/{{related.identifier}} </a>
+    <a href="{{related.identifier}}" target="_blank"> {{related.identifier}} </a>
     </li>
       {%- endif %}
     {%- endfor %}

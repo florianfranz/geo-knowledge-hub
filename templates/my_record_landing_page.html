@@ -218,7 +218,7 @@
   <div class="list-unstyled" style="list-style: none;">
     {%- for related in record.related_identifiers %}
     <li>
-    {{ related.relation_type }}:  <a href="https://doi.org/{{related.identifier}}" target="_blank"> https://doi.org/{{related.identifier}} </a>
+    {{ related.relation_type }}:  <a href="{{related.identifier}}" target="_blank"> {{related.identifier}} </a>
       ({{ related.resource_type | vocabulary_title('resource_type') }})
     </li>
     <br>
