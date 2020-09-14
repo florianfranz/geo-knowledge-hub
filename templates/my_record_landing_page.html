@@ -51,11 +51,13 @@
           </div>
         </div>
         <br>
-        {%- include "/details/my_citation.html" %}
+         <!--{%- include "/details/my_citation.html" %}-->
         {%- include "/details/my_keywords.html" %}
         {%- include "/details/my_description.html" %}
         {% if record.resource_type.type in [ "package" ] %}
         {%- include "/details/package_components.html" %}
+        {%-else %}
+        {%- include "/details/resource_package.html" %}
         {%- endif %}
         {%- include "/details/my_licenses.html" %}
 
