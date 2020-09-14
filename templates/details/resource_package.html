@@ -1,0 +1,17 @@
+<dt class="record-info-title">
+  <b><h3>See the full Knowledge Package:</h3></b>
+</dt>
+<dd>
+  <div class="list-unstyled" style="list-style: none;">
+    {%- for related in record.related_identifiers %}
+      {% if related.resource_type.type in [ "other"] %}
+    <li>
+        <i class="archive icon"></i>
+    <a href="{{related.identifier}}" target="_blank"> {{related.identifier}} </a>
+    </li>
+      {%- endif %}
+    {%- endfor %}
+  </div>
+</dd>
+<br>
+<hr class="thin-line"></hr>
