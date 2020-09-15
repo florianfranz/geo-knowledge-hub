@@ -30,9 +30,9 @@ echo "GEO Knowledge Hub containers checked!"
 #
 echo "Loading GEO Knowledge Hub demo data..."
 
-declare -a demo_data_folders=("sen2-agri")
+declare -a demo_data_folders=("sen2-agri-V2")
 
-GKH_DEMO_DATA=$(/home/ubuntu/Programs/bin/where-is-demo-data.sh)
+GKH_DEMO_DATA="/home/gribeiro/Devel/github/gqueiroz/demo-knowledge-packages"
 
 #echo ${GKH_DEMO_DATA}
 
@@ -61,6 +61,7 @@ do
         curl -k --silent -X POST https://127.0.0.1:5000/api/rdm-records/${PID}/draft/actions/publish > /dev/null 2>&1
 
         echo "${f}: published!"
+
     done
 
 done
