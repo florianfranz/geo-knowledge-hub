@@ -30,7 +30,7 @@ echo "GEO Knowledge Hub containers checked!"
 #
 echo "Loading GEO Knowledge Hub demo data..."
 
-declare -a demo_data_folders=("sen2-agri")
+declare -a demo_data_folders=("sen2-agri-V2")
 
 GKH_DEMO_DATA=$(/home/ubuntu/Programs/bin/where-is-demo-data.sh)
 
