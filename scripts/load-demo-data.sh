@@ -53,12 +53,12 @@ do
                    --silent \
                    -XPOST \
                    -H "Content-Type: application/json" \
-                   https://127.0.0.1:5000/api/rdm-records \
+                   https://localhost/api/rdm-records \
                    -d "@${f}" | jq -C -r ".pid")
 
         echo "${f}: loaded!"
 
-        curl -k --silent -X POST https://127.0.0.1:5000/api/rdm-records/${PID}/draft/actions/publish > /dev/null 2>&1
+        curl -k --silent -X POST https://localhost/api/rdm-records/${PID}/draft/actions/publish > /dev/null 2>&1
 
         echo "${f}: published!"
     done
