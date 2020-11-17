@@ -23,11 +23,27 @@ Pre-Requirements
 
 - `Python <https://www.python.org/>`_ 3.7+
 
-- `nodejs <https://nodejs.org/>`_ 13.0.0+
+- `nodejs <https://nodejs.org/>`_ 14.0.0+
 
 - `Docker <https://docs.docker.com/>`_ 1.13.0+
 
 - `Docker-Compose <https://docs.docker.com/>`_ 1.17.0+
+
+- `Cairo <https://www.cairographics.org/>`_ graphics library.
+
+
+.. note::
+
+    On Linux Ubuntu, the Cairo library can be installed with ``apt-get``::
+
+        sudo apt-get install libcairo2-dev
+
+
+.. note::
+
+    For the development environment, you should have the Python development headers. On Linux Ubuntu, it can be installed with ``apt-get``::
+
+        sudo apt install python3.7-dev
 
 
 .. note::
@@ -91,14 +107,14 @@ Check the installed version::
 
 .. note::
 
-    We are using ``invenio-cli`` version 0.14.2.
+    We are using ``invenio-cli`` version 0.18.0.
 
 
 Create Instance Configuration File
 ++++++++++++++++++++++++++++++++++
 
 
-You will need to create a file names ``.invenio.private`` in the root of the source code repository::
+You will need to create a file named ``.invenio.private`` in the root of the source code repository with the following content::
 
     echo "[cli]" > .invenio.private
     echo "project_dir = $(pwd)" >> .invenio.private
@@ -115,7 +131,7 @@ We will run GEO Knowledge Hub locally and the database and other services in Doc
 
 From the GEO Knowledge Hub folder, install all the dependencies with the help of ``invenio-cli``::
 
-    invenio-cli install --pre
+    invenio-cli install --pre --development
 
 
 After installing all the dependency libraries, setup the PostgreSQL, Elasticsearch, Redis and RabbitMQ containers::
