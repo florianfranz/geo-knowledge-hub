@@ -30,7 +30,7 @@ echo "GEO Knowledge Hub containers checked!"
 #
 echo "Loading GEO Knowledge Hub demo data..."
 
-declare -a demo_data_folders=("sen2-agri")
+declare -a demo_data_folders=("sen2-agri-V2")
 
 GKH_DEMO_DATA=$(/home/ubuntu/Programs/bin/where-is-demo-data.sh)
 
@@ -49,12 +49,18 @@ do
             break
         fi
 
-        if curl -k --silent -XPOST -H "Content-Type: application/json" https://localhost/api/records/ -d "@${f}" > /dev/null 2>&1
-        then
-            echo "${f}: loaded!"
-        else
-            echo "${f}: failed!"
-        fi
+        publish=$(curl -k \
+                       --silent \
+                       -XPOST \
+                       -H "Content-Type: application/json" \
+                       https://localhost/api/records \
+                       -d "@${f}" | jq -C -r ".links.publish")
+
+        echo "${f}: loaded!"
+
+        curl -k --silent -X POST ${publish} > /dev/null 2>&1
+
+        echo "${f}: published!"
     done
 
 done

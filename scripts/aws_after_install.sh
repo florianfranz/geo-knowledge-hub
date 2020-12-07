@@ -73,7 +73,7 @@ fi
 #
 # Installing invenio-cli
 #
-pip install "invenio-cli==0.15.0"
+pip install "invenio-cli==0.16.0"
 
 #
 # Creating '.invenio.private' file
