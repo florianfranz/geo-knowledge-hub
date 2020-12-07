@@ -25,6 +25,7 @@ dataset,Dataset,table,,,Dataset,,dataset,21,dataset,https://schema.org/Dataset
 ,,,dataset-stacitems,STAC Items,Dataset,,dataset,21,dataset,https://schema.org/Dataset
 ,,,dataset-insitu,in-situ,Dataset,,dataset,21,dataset,https://schema.org/Dataset
 ,,,dataset-samples,Samples,Dataset,,dataset,21,dataset,https://schema.org/Dataset
+,,,dataset-aoi,Area of Interest,Dataset,,dataset,21,dataset,https://schema.org/Dataset
 image,Image,chart bar outline,,,Image,,figure,25,dataset,https://schema.org/ImageObject
 ,,,image-figure,Figure,Image,Figure,figure,25,dataset,https://schema.org/ImageObject
 ,,,image-plot,Plot,Image,Plot,figure,25,dataset,https://schema.org/ImageObject
