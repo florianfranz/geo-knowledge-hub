@@ -49,16 +49,16 @@ do
             break
         fi
 
-        PID=$(curl -k \
-                   --silent \
-                   -XPOST \
-                   -H "Content-Type: application/json" \
-                   https://localhost/api/rdm-records \
-                   -d "@${f}" | jq -C -r ".pid")
+        publish=$(curl -k \
+                       --silent \
+                       -XPOST \
+                       -H "Content-Type: application/json" \
+                       https://localhost/api/records \
+                       -d "@${f}" | jq -C -r ".links.publish")
 
         echo "${f}: loaded!"
 
-        curl -k --silent -X POST https://localhost/api/rdm-records/${PID}/draft/actions/publish > /dev/null 2>&1
+        curl -k --silent -X POST ${publish} > /dev/null 2>&1
 
         echo "${f}: published!"
     done
