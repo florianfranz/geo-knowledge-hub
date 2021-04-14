@@ -69,15 +69,6 @@ services:
             - static_data:/opt/invenio/var/instance/static
             - uploaded_data:/opt/invenio/var/instance/data
             - archived_data:/opt/invenio/var/instance/archive
-        depends_on:
-            es:
-                condition: service_started
-            cache:
-                condition: service_started
-            db:
-                condition: service_started
-            mq:
-                condition: service_started
 
     # API Rest Application
     web-api:
@@ -91,15 +82,7 @@ services:
         volumes:
             - uploaded_data:/opt/invenio/var/instance/data
             - archived_data:/opt/invenio/var/instance/archive
-        depends_on:
-            es:
-                condition: service_started
-            cache:
-                condition: service_started
-            db:
-                condition: service_started
-            mq:
-                condition: service_started
+
     # Worker
     worker:
         extends:
