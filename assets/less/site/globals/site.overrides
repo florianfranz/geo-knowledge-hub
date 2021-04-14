@@ -1,1 +1,8 @@
-@import "../../theme.less";
+@import "@less/invenio_app_rdm/theme";
+
+@brandColor: #406078;
+
+@navbar_background_image: unset;
+@navbar_background_color: @brandColor;
+@footerLightColor: @brandColor;
+@footerDarkColor: @brandColor;
