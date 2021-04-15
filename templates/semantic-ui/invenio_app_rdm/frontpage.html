@@ -1,0 +1,49 @@
+{%- extends "invenio_theme/frontpage.html" %}
+
+{%- block page_header %}
+{%- include "invenio_app_rdm/header_frontpage.html" %}
+{%- endblock page_header %}
+{%- block page_body %}
+{%- block first_section %}
+<section class="geo-knowledge-hub-project-section section-content-white-bg">
+  <span class="section-title">Welcome to the GEO Knowledge Hub!</span>
+  <div class="ui container">
+    <div class="ui padded relaxed centered grid">
+      <p>An open-source digital repository for the knowledge created by the
+        <a href="https://earthobservations.org"  target="_blank"> Group on Earth Observations</a>. </p>
+      <div class="geo-knowledge-hub-goals">
+        <div class="gkh-goal">
+          <div class="column">
+            <i class="archive huge icon"></i>
+            <h3>Discover</h3>
+            <p>As a user, find open, linked and curated knowledge packages containing all relevant resources
+              necessary to reuse applications created within the
+              <a href="https://earthobservations.org/geoss_wp.php"  target="_blank"> GEO Work Programme activities</a>
+            and promote Open Science.</p>
+          </div>
+        </div>
+
+        <div class="gkh-goal">
+          <div class="column">
+            <i class="users huge icon"></i>
+            <h3>Share</h3>
+            <p>As a provider, you can use the GEO Knowledge Hub to register your EO application and make it
+              accessible to the whole community in just a few steps!</p>
+          </div>
+        </div>
+        <div class="gkh-goal">
+          <div class="column">
+            <i class="terminal huge icon"></i>
+            <h3>Contribute</h3>
+            <p>The GEO Knowledge Hub is based on <a href="https://inveniordm.docs.cern.ch/"  target="_blank"> InvenioRDM</a>  and
+            is fully open-source. Check the code on <a href="https://github.com/geo-knowledge-hub/geo-knowledge-hub"  target="_blank"> Github</a>.
+            Feel free to raise issues or contribute to the code following the contributors guidelines.</p>
+          </div>
+        </div>
+      </div>
+      <p>Read the full documentation about the GEO Knowledge Hub <a href="https://geo-knowledge-hub.github.io/"  target="_blank">here </a></p>
+    </div>
+  </div>
+</section>
+{%- endblock first_section %}
+{%- endblock page_body%}
