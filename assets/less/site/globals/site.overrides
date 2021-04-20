@@ -17,14 +17,14 @@
   background-image: @navbar_background_image;
   background-color: @navbar_background_color;
   display: flex;
-  padding: 8px;
+  padding: 0px;
   height: 85px;
-
+  margin-bottom: 0px;
  }
 
   #frontpage-search-bar{
   background-image: url("../../../../static/images/gkh_frontpage.jpg");;
-  background-color: unset;
+  background-color: @brandColor;
   background-position:100% 20%;
   background-size: cover;
   a{
@@ -65,4 +65,24 @@
     text-align: center;
     margin: 30px;
   }
+}
+
+//Footer
+
+.footer-top {
+  height: 30px;
+}
+.wrap {
+  display: flex;
+  background-color: @footerLightColor;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.wrap > div:nth-child(-n+3) {
+margin-right: 10px;
+}
+
+.wrap div:last-child {
+  margin-left: auto;
 }
