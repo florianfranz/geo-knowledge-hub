@@ -1,88 +1,65 @@
 @import "@less/invenio_app_rdm/theme";
+@import "site.variables";
 
-@brandColor: #406078;
-
-@navbar_background_image: unset;
-@navbar_background_color: @brandColor;
-@footerLightColor: @brandColor;
-@footerDarkColor: @brandColor;
-
-
-.outer-navbar {
-  background: transparent;
-  padding: 0px;
-
-
-  #invenio-nav {
-  background-image: @navbar_background_image;
-  background-color: @navbar_background_color;
-  display: flex;
-  padding: 0px;
-  height: 85px;
-  margin-bottom: 0px;
- }
-
-  #frontpage-search-bar{
-  background-image: url("../../../../static/images/gkh_frontpage.jpg");;
-  background-color: @brandColor;
-  background-position:100% 20%;
-  background-size: cover;
-  a{
-    color: #406078;
-  }
-  }
+// ------------
+// NavBar style
+// ------------
+.outer-navbar #frontpage-search-bar{
+    background-image: @frontpage_search_background;
+    background-size: cover;
 }
 
-// Frontpage
+
+// ------------
+// Footer style
+// ------------
+.rdm-footer {
+    text-align: left;
+    align-self: inherit;
+    width: 33%;
+    padding: 1em 0em 1em 0em;
+}
+
+
+// ------------
+// Theme style
+// ------------
+nav#invenio-nav {
+    margin-bottom: 0;
+}
 
 .section-title {
-  -webkit-font-smoothing: antialiased;
-  font-size: 2.5em;
-  width: 100%;
-  text-align: center;
-  display: block;
-  color: #526479;
-  margin-top:30px;
-  margin-bottom: 45px;
-  font-weight: 500;
+    color: @gkhubFontColor;
+    margin-bottom: 45px;
+    font-weight: 500;
 }
 
-.geo-knowledge-hub-goals {
-  display: flex;
-  flex-direction: row;
-  margin: 20px 80px;
-
-  i {
-    font-size: 2em;
-    color: #526479;
-  }
-
-  h3 {
-    color: #526479;
-  }
-
-  .gkh-goal {
+.gkhub-project-statement {
+    display: flex;
+    padding-right: 15%;
+    padding-left: 15%;
+    margin-bottom: 30px;
     text-align: center;
-    margin: 30px;
-  }
 }
 
-//Footer
+.gkhub-project-goals {
+    display: flex;
+    //flex-direction: row;
+    justify-content: center;
+    text-align: center;
+    //height: auto;
 
-.footer-top {
-  height: 30px;
-}
-.wrap {
-  display: flex;
-  background-color: @footerLightColor;
-  width: 100%;
-  justify-content: space-between;
-}
+    .gkhub-goal {
+        width: 25%;
+        padding: 1em;
 
-.wrap > div:nth-child(-n+3) {
-margin-right: 10px;
-}
+        i {
+            font-size: 2em;
+            color: @gkhubFontColor;
+        }
 
-.wrap div:last-child {
-  margin-left: auto;
+        h3 {
+            color: @gkhubFontColor;
+        }
+    }
 }
