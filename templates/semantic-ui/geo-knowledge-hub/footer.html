@@ -1,0 +1,58 @@
+{%- extends "invenio_app_rdm/footer.html" %}
+
+{%- block footer_top_left %}
+<div class="ui row grid">
+    <div class="rdm-footer">
+        <h4>About</h4>
+        {% trans geokub_about="about.html" %}
+        <p class="margin-small"><a href="{{geokub_about}}">About</a></p>
+        {% endtrans %}
+        {% trans geokhub_policies="policies.html" %}
+        <p class="margin-small"><a href="{{geokhub_policies}}">Policies</a></p>
+        {% endtrans %}
+        {% trans geokub_geosec="https://www.earthobservations.org/index.php" %}
+        <p class="margin-small"><a href="{{geokub_geosec}}" target="_blank">Group on Earth Observations</a></p>
+        {% endtrans %}
+    </div>
+    <div class="rdm-footer">
+        <h4>Get Involved</h4>
+    </div>
+    <div class="rdm-footer">
+        <h4>Help</h4>
+        {% trans geokub_faq="faq.html" %}
+        <p class="margin-small"><a href="{{geokub_faq}}">FAQ</a></p>
+        {% endtrans %}
+        {% trans geokub_features="features.html" %}
+        <p class="margin-small"><a href="{{geokub_features}}">Features</a></p>
+        {% endtrans %}
+    </div>
+</div>
+{%- endblock footer_top_left %}
+
+{%- block footer_bottom %}
+<div class="row footer-bottom">
+    <div class="ui container">
+        <div class="ui grid">
+            <div class="eight wide column left middle aligned">
+                {%- block footer_bottom_left %}
+                {% trans invenio_rdm="http://inveniosoftware.org/products/rdm" %}Powered by <a href="{{invenio_rdm}}">InvenioRDM</a>{% endtrans %}
+                {%- endblock footer_bottom_left %}
+            </div>
+            <div class="four wide column left middle aligned">
+                {%- block footer_bottom_right %}
+                    {%- if config.I18N_LANGUAGES %}
+                        {% from "invenio_i18n/macros/language_selector.html" import language_selector_dropdown %}
+                        {{ language_selector_dropdown() }}
+                    {%- endif %}
+                {%- endblock footer_bottom_right %}
+            </div>
+            <div class="four wide right middle aligned centered column ">
+                <a href="https://github.com/geo-knowledge-hub/geo-knowledge-hub" target="_blank"><i class="github icon large"></i></a>
+                <a href="https://discord.com/channels/730739436551143514#" target="_blank"><i class="discord icon large"></i></a>
+                <a href="https://twitter.com/geosec2025" target="_blank"><i class="twitter icon large"></i></a>
+                <a href="https://www.youtube.com/channel/UCFJ97Bp2XXA5p7ik_wWSoqg" target="_blank"><i class="youtube icon large"></i></a>
+            </div>
+        </div>
+    </div>
+</div>
+{%- endblock footer_bottom %}
