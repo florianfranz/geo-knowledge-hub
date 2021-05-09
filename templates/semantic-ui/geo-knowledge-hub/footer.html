@@ -34,17 +34,14 @@
     <div class="ui container">
         <div class="ui grid">
             <div class="eight wide column left middle aligned">
-                {%- block footer_bottom_left %}
                 {% trans invenio_rdm="http://inveniosoftware.org/products/rdm" %}Powered by <a href="{{invenio_rdm}}">InvenioRDM</a>{% endtrans %}
-                {%- endblock footer_bottom_left %}
             </div>
             <div class="four wide column left middle aligned">
-                {%- block footer_bottom_right %}
-                    {%- if config.I18N_LANGUAGES %}
-                        {% from "invenio_i18n/macros/language_selector.html" import language_selector_dropdown %}
-                        {{ language_selector_dropdown() }}
-                    {%- endif %}
-                {%- endblock footer_bottom_right %}
+                {%- if config.I18N_LANGUAGES %}
+                    {% from "invenio_i18n/macros/language_selector.html" import language_selector_dropdown %}
+                    {{ language_selector_dropdown() }}
+                    {{ config.BASE_TEMPLATE }}
+                {%- endif %}
             </div>
             <div class="four wide right middle aligned centered column ">
                 <a href="https://github.com/geo-knowledge-hub/geo-knowledge-hub" target="_blank"><i class="github icon large"></i></a>
