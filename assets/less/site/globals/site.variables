@@ -1,6 +1,11 @@
 @import "@less/invenio_app_rdm/variables";
 
+// ------------
+// Theme style
+// ------------
+@gkhubFontColor: #526479;
 @brandColor: #406078;
+
 
 // ------------
 // NavBar style
@@ -15,8 +20,3 @@
 // ------------
 @footerLightColor: #397096;
 @footerDarkColor: @brandColor;
-
-// ------------
-// Theme style
-// ------------
-@gkhubFontColor: #526479;
