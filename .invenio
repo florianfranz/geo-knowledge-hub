@@ -5,12 +5,12 @@ logfile = /logs/invenio-cli.log
 [cookiecutter]
 project_name = GEO Knowledge Hub
 project_shortname = geo-knowledge-hub
-project_site = https://github.com/geo-knowledge-hub
+project_site = https://geo-knowledge-hub.github.io
 github_repo = geo-knowledge-hub/geo-knowledge-hub
 description = GEO Knowledge Hub Digital Library
 author_name = GEO Secretariat
 author_email = geokhub@dpi.inpe.br
-year = 2021
+year = 2020-2021
 python_version = 3.8
 database = postgresql
 elasticsearch = 7
