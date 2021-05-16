@@ -17,11 +17,11 @@ echo "AfterInstall script started..."
 echo "DATE=$(date)"
 echo "USER=$(whoami)"
 echo "PWD=$(pwd)"
-echo "APPLICATION_NAME=${APPLICATION_NAME}"
-echo "DEPLOYMENT_ID=${DEPLOYMENT_ID}"
-echo "DEPLOYMENT_GROUP_NAME=${DEPLOYMENT_GROUP_NAME}"
-echo "DEPLOYMENT_GROUP_ID=${DEPLOYMENT_GROUP_ID}"
-echo "LIFECYCLE_EVENT=${LIFECYCLE_EVENT}"
+#echo "APPLICATION_NAME=${APPLICATION_NAME}"
+#echo "DEPLOYMENT_ID=${DEPLOYMENT_ID}"
+#echo "DEPLOYMENT_GROUP_NAME=${DEPLOYMENT_GROUP_NAME}"
+#echo "DEPLOYMENT_GROUP_ID=${DEPLOYMENT_GROUP_ID}"
+#echo "LIFECYCLE_EVENT=${LIFECYCLE_EVENT}"
 
 #
 # Check if the GEO Knowledge Hub source code directory was copied
@@ -52,9 +52,9 @@ then
 
     if [ ! -d "$(pwd)/venv" ]
     then
-        echo "Creating a new Python 3.7 virtual environment..."
+        echo "Creating a new Python 3.8 virtual environment..."
 
-        python3.7 -m venv venv
+        python3.8 -m venv venv
         source venv/bin/activate
         pip install --upgrade pip
         pip install --upgrade setuptools
@@ -73,7 +73,7 @@ fi
 #
 # Installing invenio-cli
 #
-pip install "invenio-cli==0.16.0"
+pip install "invenio-cli==0.23.0"
 
 #
 # Creating '.invenio.private' file
@@ -95,9 +95,17 @@ echo "Adding host IPv4 to 'invenio.cfg' file..."
 EC2_INSTANCE_IPV4=$(/home/ubuntu/Programs/bin/which-ip.sh)
 APP_ALLOWED_HOSTS_ORIGINAL="APP_ALLOWED_HOSTS = \['0\.0\.0\.0', 'localhost', '127\.0\.0\.1'\]"
 APP_ALLOWED_HOSTS_NEW="APP_ALLOWED_HOSTS = ['0.0.0.0', 'localhost', '127.0.0.1', '${EC2_INSTANCE_IPV4}']"
-
 sed -i 's/'"${APP_ALLOWED_HOSTS_ORIGINAL}"'/'"${APP_ALLOWED_HOSTS_NEW}"'/g' invenio.cfg
+echo "IPv4 added to APP_ALLOWED_HOSTS list in 'invenio.cfg' file!"
 
-echo "IPv4 added to 'invenio.cfg' file!"
+SITE_HOSTNAME_ORIGINAL="SITE_HOSTNAME = \"127.0.0.1\""
+SITE_HOSTNAME_NEW="SITE_HOSTNAME = \"${EC2_INSTANCE_IPV4}\""
+sed -i 's/'"${SITE_HOSTNAME_ORIGINAL}"'/'"${SITE_HOSTNAME_NEW}"'/g' invenio.cfg
+echo "IPv4 set for SITE_HOSTNAME in 'invenio.cfg' file!"
+
+SITE_HOSTPORT_ORIGINAL="SITE_HOSTPORT = \"5000\""
+SITE_HOSTPORT_NEW="SITE_HOSTPORT = \"443\""
+sed -i 's/'"${SITE_HOSTPORT_ORIGINAL}"'/'"${SITE_HOSTPORT_NEW}"'/g' invenio.cfg
+echo "Port number set for SITE_HOSTPORT in 'invenio.cfg' file!"
 
 echo "AfterInstall script finished successfully!"
