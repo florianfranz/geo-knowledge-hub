@@ -24,44 +24,50 @@ echo "Checking if GEO Knowledge Hub docker containers are all up..."
 
 echo "GEO Knowledge Hub containers checked!"
 
+#
+# Create user and generate access token
+#
+echo "Creating user to ingest demo data..."
+
+docker exec -it \
+            geo-knowledge-hub_web-api_1 \
+            invenio users create ${GEO_KNOWLEDGE_HUB_USER_NAME} \
+            --password=${GEO_KNOWLEDGE_HUB_USER_PASSWORD} \
+            --active
+
+docker exec -it \
+            geo-knowledge-hub_web-api_1 \
+            invenio roles add ${GEO_KNOWLEDGE_HUB_USER_NAME} admin
+
+GKH_TOKEN=$(docker exec -it \
+                        geo-knowledge-hub_web-api_1 \
+                        invenio tokens create --name gkhub-ingest --user ${GEO_KNOWLEDGE_HUB_USER_NAME} | tr -d '\n' |  tr -d '\r' | tr -d ' ')
+
+echo "User, role and token created!"
+
+#
+# Locate instanse IP
+#
+EC2_INSTANCE_IPV4=$(/home/ubuntu/Programs/bin/which-ip.sh)
 
 #
 # Load GEO Knowledge Hub demo data
 #
 echo "Loading GEO Knowledge Hub demo data..."
 
-declare -a demo_data_folders=("sen2-agri-V2")
+declare -a demo_data_folders=("bdc")
 
 GKH_DEMO_DATA=$(/home/ubuntu/Programs/bin/where-is-demo-data.sh)
-
-#echo ${GKH_DEMO_DATA}
 
 for data_dir in "${demo_data_folders[@]}"
 do
     folder_path="${GKH_DEMO_DATA}/${data_dir}"
-    #echo ${folder_path}
 
-    for f in ${folder_path}/*.json
-    do
-        if [ ! -f "${f}" ]
-        then
-            echo "No file exists in directory '${folder_path}'!"
-            break
-        fi
-
-        publish=$(curl -k \
-                       --silent \
-                       -XPOST \
-                       -H "Content-Type: application/json" \
-                       https://localhost/api/records \
-                       -d "@${f}" | jq -C -r ".links.publish")
-
-        echo "${f}: loaded!"
-
-        curl -k --silent -X POST ${publish} > /dev/null 2>&1
-
-        echo "${f}: published!"
-    done
+    gkh-package-loader load --verbose \
+                            --url https://${EC2_INSTANCE_IPV4}/api \
+                            --access-token "${GKH_TOKEN}" \
+                            --knowledge-package "${folder_path}/knowledge-package.json" \
+                            --resources-dir "${folder_path}"
 
 done
 
