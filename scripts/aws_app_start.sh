@@ -33,12 +33,16 @@ then
     echo "Virtual environment activated!"
 fi
 
-invenio-cli containerize --force --pre
+invenio-cli containers build
+
+invenio-cli containers setup --no-demo-data
+
+invenio-cli containers start
 
 #
 # Load GEO Knowledge Hub demo data
 #
-./scripts/load-demo-data.sh
+#./scripts/load-demo-data.sh
 
 
 echo "ApplicationStart script finished successfully!"
