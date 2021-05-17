@@ -29,19 +29,19 @@ echo "GEO Knowledge Hub containers checked!"
 #
 echo "Creating user to ingest demo data..."
 
-docker exec -it \
-            geo-knowledge-hub_web-api_1 \
-            invenio users create ${GEO_KNOWLEDGE_HUB_USER_NAME} \
-            --password=${GEO_KNOWLEDGE_HUB_USER_PASSWORD} \
-            --active
+#docker exec -it \
+#            geo-knowledge-hub_web-api_1 \
+#            invenio users create ${GEO_KNOWLEDGE_HUB_USER_NAME} \
+#            --password=${GEO_KNOWLEDGE_HUB_USER_PASSWORD} \
+#            --active
 
-docker exec -it \
-            geo-knowledge-hub_web-api_1 \
-            invenio roles add ${GEO_KNOWLEDGE_HUB_USER_NAME} admin
+#docker exec -it \
+#            geo-knowledge-hub_web-api_1 \
+#            invenio roles add ${GEO_KNOWLEDGE_HUB_USER_NAME} admin
 
-GKH_TOKEN=$(docker exec -it \
-                        geo-knowledge-hub_web-api_1 \
-                        invenio tokens create --name gkhub-ingest --user ${GEO_KNOWLEDGE_HUB_USER_NAME} | tr -d '\n' |  tr -d '\r' | tr -d ' ')
+#GKH_TOKEN=$(docker exec -it \
+#                        geo-knowledge-hub_web-api_1 \
+#                        invenio tokens create --name gkhub-ingest --user ${GEO_KNOWLEDGE_HUB_USER_NAME} | tr -d '\n' |  tr -d '\r' | tr -d ' ')
 
 echo "User, role and token created!"
 
@@ -63,11 +63,11 @@ for data_dir in "${demo_data_folders[@]}"
 do
     folder_path="${GKH_DEMO_DATA}/${data_dir}"
 
-    gkh-package-loader load --verbose \
-                            --url https://${EC2_INSTANCE_IPV4}/api \
-                            --access-token "${GKH_TOKEN}" \
-                            --knowledge-package "${folder_path}/knowledge-package.json" \
-                            --resources-dir "${folder_path}"
+#    gkh-package-loader load --verbose \
+#                            --url https://${EC2_INSTANCE_IPV4}/api \
+#                            --access-token "${GKH_TOKEN}" \
+#                            --knowledge-package "${folder_path}/knowledge-package.json" \
+#                            --resources-dir "${folder_path}"
 
 done
 

@@ -42,7 +42,7 @@ invenio-cli containers start
 #
 # Load GEO Knowledge Hub demo data
 #
-#./scripts/load-demo-data.sh
+./scripts/load-demo-data.sh
 
 
 echo "ApplicationStart script finished successfully!"
