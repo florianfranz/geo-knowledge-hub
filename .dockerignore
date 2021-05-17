@@ -8,11 +8,12 @@
 
 # Ignore local virtualenv (if present)
 .venv/
+venv/
 
 # Ignore PyCharm project
 .idea/
 
 # gkh-package-loader
-gkh-package-loader
+gkh-package-loader/
 
 
