@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 #
 # This file is part of GEO Knowledge Hub.
-# Copyright 2020 GEO Secretariat.
+# Copyright 2020-2021 GEO Secretariat.
 #
 # GEO Knowledge Hub is free software; you can redistribute it and/or modify it
 # under the terms of the MIT License; see LICENSE file for more details.
@@ -27,10 +27,20 @@ fi
 #
 cd "${HOME}/geo-knowledge-hub"
 
-docker-compose -f docker-compose.full.yml down
+#
+# Activate the virtual environment if needed.
+#
+if [[ ! -v VIRTUAL_ENV ]]
+then
+    source venv/bin/activate
+
+    echo "Virtual environment activated!"
+fi
+
+invenio-cli containers destroy
 
 cd "${HOME}"
 
-rm -rf /home/ubuntu/geo-knowledge-hub
+#rm -rf /home/ubuntu/geo-knowledge-hub
 
 echo "ApplicationStop script finished successfully!"

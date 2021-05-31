@@ -1,6 +1,6 @@
 ..
     This file is part of GEO Knowledge Hub.
-    Copyright 2020 GEO Secretariat.
+    Copyright 2020-2021 GEO Secretariat.
 
     GEO Knowledge Hub is free software; you can redistribute it and/or modify it
     under the terms of the MIT License; see LICENSE file for more details.
@@ -9,12 +9,19 @@
 GEO Knowldege Hub - Changes
 ===========================
 
+Version 0.3.0 (Under Development)
+---------------------------------
 
-Version 0.1.0
--------------
+
+- Based on InvenioRDM 3.0.
+
+- Enhanced Jinja templates
+
+- Added GEO Knowldege Hub Extension
 
 
-Released 2020-09-01
+Version 0.1.0 (2020-09-01)
+--------------------------
 
 
 - Customization of InvenioRDM pages:
@@ -25,7 +32,7 @@ Released 2020-09-01
 
 - Basic documentation of repository organization, how to install and deploy the system.
 
-- Data model ``0.1.0`` is based on Invenio-RDM-Records ``0.14.1``.
+- Data model ``0.1.0`` is based on InvenioRDM ``0.10.0``.
 
 - Prepared test ecosystem on Travis CI.
 
