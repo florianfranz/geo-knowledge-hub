@@ -136,7 +136,7 @@ From the GEO Knowledge Hub folder, install all the dependencies with the help of
 
 After installing all the dependency libraries, setup the PostgreSQL, Elasticsearch, Redis and RabbitMQ containers::
 
-    invenio-cli services --force
+    invenio-cli services setup --force
 
 
 Run GEO Knowledge Hub
