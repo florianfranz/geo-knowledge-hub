@@ -33,7 +33,11 @@ then
     echo "Virtual environment activated!"
 fi
 
-invenio-cli containerize --force --pre
+invenio-cli containers build
+
+invenio-cli containers setup --no-demo-data
+
+invenio-cli containers start
 
 #
 # Load GEO Knowledge Hub demo data
