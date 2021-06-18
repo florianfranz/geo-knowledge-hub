@@ -1,6 +1,0 @@
-[submodule "gkh-package-loader"]
-	path = gkh-package-loader
-	url = https://github.com/geo-knowledge-hub/gkh-package-loader
-[submodule "geo-knowledge-hub-ext"]
-	path = geo-knowledge-hub-ext
-	url = https://github.com/geo-knowledge-hub/geo-knowledge-hub-ext
