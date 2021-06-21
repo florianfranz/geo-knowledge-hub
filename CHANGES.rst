@@ -9,15 +9,18 @@
 GEO Knowldege Hub - Changes
 ===========================
 
-Version 0.3.0 (Under Development)
----------------------------------
+
+Version 0.3.0
+-------------
 
 
-- Based on InvenioRDM 3.0.
+- Based on `InvenioRDM 4.0 <https://inveniordm.docs.cern.ch/releases/versions/version-v4.0.0/>`_.
 
-- Enhanced Jinja templates
+- Compatible with `GEO Knowledge Hub Package Loader 0.3.0 <https://github.com/geo-knowledge-hub/gkh-package-loader/tree/b-0.3>`_ and `GEO Knowledge Hub Extenson 0.3.0 <https://github.com/geo-knowledge-hub/geo-knowledge-hub-ext/tree/b-0.3>`_.
 
-- Added GEO Knowldege Hub Extension
+- Enhanced Jinja templates.
+
+- Added GEO Knowldege Hub Extension.
 
 
 Version 0.1.0 (2020-09-01)
