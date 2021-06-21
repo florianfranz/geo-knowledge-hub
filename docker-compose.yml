@@ -39,3 +39,7 @@ services:
         extends:
             file: docker-services.yml
             service: es
+    isso:
+        extends:
+            file: docker-services.yml
+            service: isso

@@ -32,7 +32,6 @@ RUN cp -r ./static/. ${INVENIO_INSTANCE_PATH}/static/ && \
     invenio collect --verbose  && \
     invenio webpack create && \
     invenio webpack install --unsafe && \
-    invenio webpack build && \
-    ln -s /opt/invenio/var/instance/assets/manifest.json /opt/invenio/var/instance/static/dist/manifest.json
+    invenio webpack build
 
-ENTRYPOINT [ "bash", "-c"]
+ENTRYPOINT [ "bash", "-c" ]

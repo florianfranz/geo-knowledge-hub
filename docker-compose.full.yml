@@ -43,6 +43,13 @@ services:
         extends:
             file: docker-services.yml
             service: es
+    isso:
+        extends:
+            file: docker-services.yml
+            service: isso
+        volumes:
+            - "${PWD}/isso-db/:/db"
+            - "${PWD}/isso.cfg:/config/isso.cfg"
     # Frontend
     frontend:
         extends:
@@ -53,6 +60,7 @@ services:
         depends_on:
             - web-ui
             - web-api
+            - isso
         ports:
             - "80:80"
             - "443:443"
@@ -89,7 +97,7 @@ services:
             file: docker-services.yml
             service: app
         restart: "always"
-        command: ["celery worker -A invenio_app.celery --loglevel=INFO"]
+        command: ["celery -A invenio_app.celery worker --loglevel=INFO"]
         image: geo-knowledge-hub
         depends_on:
             es:
