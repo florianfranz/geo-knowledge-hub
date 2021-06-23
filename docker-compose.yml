@@ -43,3 +43,6 @@ services:
         extends:
             file: docker-services.yml
             service: isso
+        volumes:
+            - "${PWD}/isso-db/:/db"
+            - "${PWD}/isso.cfg:/config/isso.cfg"
