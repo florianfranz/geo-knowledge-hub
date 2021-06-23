@@ -11,7 +11,8 @@ invenio-app-rdm = {version = "~=4.0.0", extras = ["elasticsearch7", "postgresql"
 uwsgi = ">=2.0"
 uwsgitop = ">=0.11"
 uwsgi-tools = ">=1.1.1"
-wtforms = "==2.3.1"
+wtforms = ">=2.3.1"
+geo-knowledge-hub-ext = {editable = true, git = "https://github.com/geo-knowledge-hub/geo-knowledge-hub-ext.git"}
 
 [requires]
 python_version = "3.8"
