@@ -74,3 +74,9 @@ services:
         ports:
             - "9200:9200"
             - "9300:9300"
+    isso:
+        build: ./docker/isso/
+        image: geo-knowledge-hub-isso
+        restart: "unless-stopped"
+        ports:
+            - "8080:8080"

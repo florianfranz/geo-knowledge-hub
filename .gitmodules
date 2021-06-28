@@ -1,0 +1,4 @@
+[submodule "docker/isso"]
+	path = docker/isso
+	url = https://github.com/geo-knowledge-hub/isso.git
+	branch = feature/ssl-without-check
