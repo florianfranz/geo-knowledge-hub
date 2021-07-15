@@ -30,6 +30,7 @@ jobs:
 
       - name: Prepare InvenioRDM config files
         run: |
+          echo `which python3.8`
           ./scripts/before_install.sh
 
       - name: Install GEO-Knowledge Hub Dependencies
