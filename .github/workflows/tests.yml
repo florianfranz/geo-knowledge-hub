@@ -1,4 +1,4 @@
-name: GEO-Knowledge-Hub-CI
+name: build
 
 on:
   push:
@@ -31,7 +31,6 @@ jobs:
       - name: Prepare InvenioRDM config files
         run: |
           ./scripts/before_install.sh
-          cat .invenio.private
 
       - name: Install GEO-Knowledge Hub Dependencies
         run: |
