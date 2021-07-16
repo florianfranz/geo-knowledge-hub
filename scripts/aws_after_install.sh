@@ -45,12 +45,6 @@ sudo chown -R ubuntu:ubuntu "${HOME}/geo-knowledge-hub"
 cd "${HOME}/geo-knowledge-hub"
 
 #
-# Initialize Git submodules
-#
-git submodule init
-git submodule update
-
-#
 # Create a new virtual environment if the script is not running inside one.
 #
 if [[ ! -v VIRTUAL_ENV ]]
