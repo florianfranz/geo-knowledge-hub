@@ -17,13 +17,17 @@
 #   $ docker-compose up -f docker-compose.full.yml -d
 #
 # Following services are included:
-# - Frontend: Nginx (exposed ports: 40 and 443)
+# - Frontend: NGINX (exposed ports: 40 and 443)
 # - UI application: UWSGI (not exposed)
 # - API application: UWSGI (not exposed)
 # - Cache: Redis (exposed port: 6379)
-# - DB: (PostgresSQL/MySQL) (exposed port: 5432 or 3306)
+# - Database: PostgresSQL (exposed port: 5432)
+# - pgAdmin 4: (exposed port: 5050, 5051)
 # - Message queue: RabbitMQ (exposed ports: 5672, 15672)
 # - Elasticsearch (exposed ports: 9200, 9300)
+# - Kibana (view ES indexes) (exposed ports: 5601)
+# - S3: Minio (exposed ports: 9000, 9001)
+# - isso (exposed ports: None)
 #
 version: '2.2'
 services:
@@ -43,6 +47,20 @@ services:
         extends:
             file: docker-services.yml
             service: es
+    kibana:
+        extends:
+            file: docker-services.yml
+            service: kibana
+    pgadmin:
+        extends:
+            file: docker-services.yml
+            service: pgadmin
+#    s3:
+#        extends:
+#          file: docker-services.yml
+#          service: s3
+#        volumes:
+#            - s3_data:/data
     isso:
         extends:
             file: docker-services.yml
@@ -75,8 +93,6 @@ services:
             - "5000"
         volumes:
             - static_data:/opt/invenio/var/instance/static
-            - uploaded_data:/opt/invenio/var/instance/data
-            - archived_data:/opt/invenio/var/instance/archive
 
     # API Rest Application
     web-api:
@@ -87,9 +103,6 @@ services:
         image: geo-knowledge-hub
         ports:
             - "5000"
-        volumes:
-            - uploaded_data:/opt/invenio/var/instance/data
-            - archived_data:/opt/invenio/var/instance/archive
 
     # Worker
     worker:
@@ -110,5 +123,4 @@ services:
                 condition: service_started
 volumes:
     static_data:
-    uploaded_data:
-    archived_data:
+#    s3_data:

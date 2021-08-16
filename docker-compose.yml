@@ -17,9 +17,13 @@
 #
 # Following services are included:
 # - Cache: Redis (exposed port: 6379)
-# - DB: (PostgresSQL/MySQL) (exposed port: 5432 or 3306)
+# - DB: PostgresSQL (exposed port: 5432)
+# - pgAdmin 4: (exposed port: 5050, 5051)
 # - Message queue: RabbitMQ (exposed ports: 5672, 15672)
 # - Elasticsearch (exposed ports: 9200, 9300)
+# - Kibana (view ES indexes) (exposed ports: 5601)
+# - S3: Minio (exposed ports: 9000, 9001)
+# - isso (exposed ports: None)
 #
 version: '2.2'
 services:
@@ -39,6 +43,18 @@ services:
         extends:
             file: docker-services.yml
             service: es
+    kibana:
+        extends:
+            file: docker-services.yml
+            service: kibana
+    pgadmin:
+        extends:
+            file: docker-services.yml
+            service: pgadmin
+    s3:
+        extends:
+            file: docker-services.yml
+            service: s3
     isso:
         extends:
             file: docker-services.yml
