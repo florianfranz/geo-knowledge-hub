@@ -15,8 +15,8 @@ GEO Knowledge Hub Digital Library
         :alt: Software License
 
 
-.. image:: https://travis-ci.org/geo-knowledge-hub/geo-knowledge-hub.svg?branch=master
-        :target: https://travis-ci.org/geo-knowledge-hub/geo-knowledge-hub
+.. image:: https://img.shields.io/github/workflow/status/geo-knowledge-hub/geo-knowledge-hub/build
+        :target: https://github.com/geo-knowledge-hub/geo-knowledge-hub/actions/workflows/build.yml
         :alt: Build Status
 
 

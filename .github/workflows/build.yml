@@ -1,0 +1,67 @@
+name: build
+
+on:
+  push:
+    branches: master
+
+  pull_request:
+    branches: master
+
+  release:
+    types: [published]
+
+jobs:
+  build:
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Set up Node 14.x
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+
+      - name: Set up Python 3.8
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.8
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip setuptools wheel
+          python -m pip install "invenio-cli==0.23.1"
+
+      - name: Prepare InvenioRDM config files
+        run: |
+          ./scripts/before_install.sh
+
+      - name: Install GEO-Knowledge Hub Dependencies
+        run: |
+          invenio-cli install
+
+  deployment:
+    runs-on: ubuntu-20.04
+    needs: [build]
+    if: >-
+      github.event_name == 'release' && (
+        github.event.action == 'published'
+      ) &&
+      !github.event.release.draft &&
+      github.event.release.published_at
+    steps:
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ secrets.AWS_REGION }}
+
+      - name: Create CodeDeploy Deployment
+        id: deploy
+        run: |
+          aws deploy create-deployment \
+            --application-name ${{ secrets.AWS_CODEDEPLOY_APPLICATION_NAME }} \
+            --deployment-group-name ${{ secrets.AWS_CODEDEPLOY_DEPLOYMENT_GROUP }} \
+            --deployment-config-name ${{ secrets.AWS_CODEDEPLOY_CONFIG_NAME }} \
+            --github-location repository=${{ github.repository }},commitId=${{ github.sha }}

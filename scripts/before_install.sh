@@ -11,6 +11,5 @@ set -eou pipefail
 
 echo "[cli]" > .invenio.private
 echo "project_dir = $(pwd)" >> .invenio.private
-echo "instance_path = ${VIRTUAL_ENV}/var/instance" >> .invenio.private
+echo "instance_path = $(pwd)/var/instance" >> .invenio.private
 echo "services_setup = True" >> .invenio.private
-
